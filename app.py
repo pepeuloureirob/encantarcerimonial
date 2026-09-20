@@ -257,8 +257,8 @@ def orcamento():
 def admin_login():
     if request.method == "POST":
         check_csrf()
-        email = request.form.get("encantar.cerimonial@gmail.com", "").strip().lower()
-        senha = request.form.get("encantar123", "")
+        email = request.form.get("ADMIN_EMAIL", "encantar.cerimonial@gmail.com").strip().lower()
+        senha = request.form.get("ADMIN_PASSWORD", "encantar.cerimonial123")
         user = Usuario.query.filter_by(email=email).first()
         if user and check_password_hash(user.senha_hash, senha):
             session["admin_id"] = user.id
